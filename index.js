@@ -1,3 +1,4 @@
+let deckId;
 const newDeckBtn = document.getElementById('new-deck');
 
 function newDeckClick() {
