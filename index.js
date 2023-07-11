@@ -3,6 +3,9 @@ const newDeckBtn = document.getElementById('new-deck');
 const drawCardBtn = document.getElementById('draw-card');
 const cardImgContainer = document.getElementById('card-img');
 
+newDeckBtn.addEventListener('click', newDeckClick);
+drawCardBtn.addEventListener('click', drawTwoCards);
+
 function newDeckClick() {
   fetch('https://deckofcardsapi.com/api/deck/new/shuffle/')
     .then(res => res.json())
@@ -16,12 +19,35 @@ function drawTwoCards() {
     .then(res => res.json())
     .then(data => {
       let cards = data.cards;
-      cardImgContainer.innerHTML = `
-        <img src=${cards[0].image} />
-        <img src=${cards[1].image} />
+      cardImgContainer.children[0].innerHTML = `
+        <img src=${cards[0].image} class="card" />
+      `
+      cardImgContainer.children[1].innerHTML = `
+        <img src=${cards[1].image} class="card" />
       `
     })
 };
 
-newDeckBtn.addEventListener('click', newDeckClick);
-drawCardBtn.addEventListener('click', drawTwoCards);
+function cardWinner(card1, card2) {
+  const valueOptions = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
+
+  const card1ValueIndex = valueOptions.indexOf(card1.value);
+  const card2ValueIndex = valueOptions.indexOf(card2.value);
+
+  if(card1ValueIndex > card2ValueIndex) {
+    console.log('Card 1 wins!');
+  } else if(card1ValueIndex < card2ValueIndex) {
+    console.log('Card 2 wins!');
+  } else {
+    console.log("It's a tie!");
+  }
+}
+
+const card1Obj = {
+  value: '8'
+}
+const card2Obj = {
+  value: 'ACE'
+}
+
+cardWinner(card1Obj, card2Obj);
