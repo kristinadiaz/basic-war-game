@@ -28,7 +28,7 @@ function drawTwoCards() {
         <img src=${cards[1].image} class="card" />
       `
       const winnerText = cardWinner(cards[0], cards[1]);
-      gameResult.innerHTML = winnerText;
+      gameResult.textContent = winnerText;
     })
 };
 
