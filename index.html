@@ -10,12 +10,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <button type="button" id="new-deck">New Deck</button>
+    <div class="top">
+      <button type="button" id="new-deck">New Deck</button>
+      <p id="remaining-cards"></p>
+    </div>
     <h2 id="game-result">Game Of War</h2>
+    <h3 id="comp-score">Computer Score: 0</h3>
     <div id="card-img">
       <div class="card-slot"></div>
       <div class="card-slot"></div>
     </div>
+    <h3 id="my-score">My Score: 0</h3>
     <button type="button" id="draw-card">Draw</button>
     <script src="index.js"></script>
   </body>
